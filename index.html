@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kuis Pertumbuhan & Perkembangan - Kelas 9</title>
+  <title>Kuis IPA Kelas 9 - Sistem Koordinasi Reproduksi dna Homeostasis Manusia</title>
   <style>
     * {
       box-sizing: border-box;
@@ -380,7 +380,7 @@
 
   <script>
     // ====== 50 PERTANYAAN ======
-    const soal = [
+    const soalAsli = [
       {
         q: "Bagian sistem saraf pusat yang berfungsi mengatur keseimbangan dan koordinasi gerak tubuh adalah...",
         o: [
@@ -976,6 +976,16 @@
       }
     ];
 
+        // ====== FUNGSI ACAK (Fisher-Yates Shuffle) ======
+    function shuffleArray(arr) {
+      const shuffled = [...arr];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    }
+
     // ====== AUDIO SYSTEM ======
     let audioCtx = null;
 
@@ -1102,6 +1112,9 @@
 
     function mulaiKuis() {
       unlockAudio();
+
+            // Acak urutan soal setiap mulai kuis
+      soal = shuffleArray(soalAsli);
       if ('speechSynthesis' in window) {
         const u = new SpeechSynthesisUtterance(" ");
         speechSynthesis.speak(u);
