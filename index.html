@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kuis IPA Kelas 9 - Sistem Koordinasi Reproduksi dna Homeostasis Manusia</title>
+  <title>Kuis Sistem Koordinasi, Reproduksi dan Homeostasis Manusia - Kelas 9</title>
   <style>
     * {
       box-sizing: border-box;
@@ -385,8 +385,7 @@
   </div>
 
   <script>
-
-      // ====== LAPORAN AKTIVITAS KE GOOGLE SPREADSHEET ======
+    // ====== LAPORAN AKTIVITAS KE GOOGLE SPREADSHEET ======
     // Ganti URL di bawah dengan URL Web App Google Apps Script yang berakhiran /exec.
     const URL_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbx16OflbXEh-gNZKUOfq4y2sE_-vDGbrt75-xJF6PMRXWRuEy05ojiGSLRtRZ0HD-JpMA/exec";
 
@@ -434,6 +433,7 @@
 
     // Catat kunjungan ketika halaman dibuka.
     catatAktivitas("Halaman dibuka");
+
     // ====== 50 PERTANYAAN ======
     const soalAsli = [
       {
@@ -1031,7 +1031,7 @@
       }
     ];
 
-        // ====== FUNGSI ACAK (Fisher-Yates Shuffle) ======
+    // ====== FUNGSI ACAK (Fisher-Yates Shuffle) ======
     function shuffleArray(arr) {
       const shuffled = [...arr];
       for (let i = shuffled.length - 1; i > 0; i--) {
@@ -1167,15 +1167,16 @@
 
     function mulaiKuis() {
       unlockAudio();
-
-            // Acak urutan soal setiap mulai kuis
+      // Acak urutan soal setiap mulai kuis
       soal = shuffleArray(soalAsli);
+
       if ('speechSynthesis' in window) {
         const u = new SpeechSynthesisUtterance(" ");
         speechSynthesis.speak(u);
       }
       document.getElementById('startScreen').classList.add('hidden');
       document.getElementById('quizScreen').classList.remove('hidden');
+      catatAktivitas("Mulai kuis");
       tampilkanSoal();
       if (!musikOn) toggleMusik();
     }
@@ -1313,8 +1314,7 @@
       if (skor >= 70) setTimeout(suaraBenar, 300);
       setTimeout(() => bicara("Kuis selesai. Skor kamu " + skor + " dari 100. " + pesan), 800);
     }
-
-        // 1. Matikan Klik Kanan
+      // 1. Matikan Klik Kanan
     document.addEventListener('contextmenu', event => event.preventDefault());
 
     // 2. Matikan Shortcut Keyboard (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U)
